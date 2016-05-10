@@ -36,6 +36,7 @@ func DoRequest (opts requestOptions) (data interface{}) {
 }
 
 func main() {
-	request_opts := RequestOptions("http://www.reddit.com/top.json")
-	DoRequest(request_opts)
+	DoRequest(
+		RequestOptions("http://www.reddit.com/top.json")
+	)
 }
