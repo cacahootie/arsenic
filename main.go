@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"github.com/parnurzeal/gorequest"
 )
 
@@ -23,7 +22,7 @@ func DoRequest (opts requestOptions) {
 		body string
 		errs []error
 	)
-	resp, body, errs = request.CustomMethod(requestOptions.method, requestOptions.url).
+	resp, body, errs = request.CustomMethod(opts.method, opts.url).
 		SetDebug(true).
 		Set("User-Agent","Super-spiffy golang useragent /u/cacahootie").
 	End()
