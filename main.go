@@ -16,18 +16,13 @@ func RequestOptions (destUrl string) (retval requestOptions) {
 
 var request = gorequest.New()
 
-func DoRequest (opts requestOptions) {
-	var (
-		resp gorequest.Response
-		body string
-		errs []error
-	)
-	resp, body, errs = request.CustomMethod(opts.method, opts.url).
+func DoRequest (opts requestOptions) (data interface{}, err error[]) {
+	resp, body, errs := request.CustomMethod(opts.method, opts.url).
 		SetDebug(true).
 		Set("User-Agent","Super-spiffy golang useragent /u/cacahootie").
 	End()
-	_ = body
 	if errs != nil {
+		_ = body
 		fmt.Println(errs)
 		return
 	} else if resp.Status != "200 OK" {
