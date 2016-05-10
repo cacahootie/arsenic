@@ -37,9 +37,6 @@ func DoRequest (opts requestOptions) {
 	} else {
 		fmt.Print(body)
 	}
-	_ = resp
-	_ = body
-	_ = errs
 }
 
 func main() {
