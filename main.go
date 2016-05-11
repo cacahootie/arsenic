@@ -10,11 +10,14 @@ import (
 type requestOptions struct {
 	Url string `json:url`
 	Method string `json:method`
-	Query string `json:query`
+	QueryString string `json:queryString`
+	QueryObj map[string]string `json:queryObj`
 }
 
-func RequestOptions(url, method, query string) (retval requestOptions) {
-	retval = requestOptions{url, method, query}
+func RequestOptions(url, method, queryString string) (retval requestOptions) {
+	retval.Url = url
+	retval.Method = method
+	retval.QueryString = queryString
 	return
 }
 
@@ -24,8 +27,8 @@ func DoRequest(opts requestOptions) (data interface{}, err error) {
 	r := request.CustomMethod(opts.Method, opts.Url).
 		SetDebug(true).
 		Set("User-Agent", "Super-spiffy golang useragent /u/cacahootie")
-	if opts.Query != "" {
-		r.Query(opts.Query)
+	if opts.QueryString != "" {
+		r.Query(opts.QueryString)
 	}
 	resp, body, errs :=	r.End()
 	data = body
