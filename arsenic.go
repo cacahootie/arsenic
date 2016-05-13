@@ -1,9 +1,7 @@
-package main
+package arsenic
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"github.com/parnurzeal/gorequest"
 )
 
@@ -39,17 +37,4 @@ func DoRequest(opts requestOptions) (data interface{}, err error) {
 		fmt.Println("non 200 status code")
 	}
 	return
-}
-
-func main() {
-	var opts requestOptions
-	raw, err := ioutil.ReadFile("./demo/config.json")
-    if err != nil {
-        fmt.Println(err.Error())
-        return
-    }
-
-    json.Unmarshal(raw, &opts)
-	//opts = RequestOptions("http://localhost:8080", "GET", "monkey=flan")
-	DoRequest(opts)
 }
