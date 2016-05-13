@@ -24,7 +24,7 @@ var request = gorequest.New()
 func DoRequest(opts requestOptions) (data interface{}, err error) {
 	r := request.CustomMethod(opts.Method, opts.Url).
 		SetDebug(true).
-		Set("User-Agent", "Super-spiffy golang useragent /u/cacahootie")
+		Set("User-Agent", "Super-spiffy arsenic golang useragent")
 	if opts.QueryString != "" {
 		r.Query(opts.QueryString)
 	}

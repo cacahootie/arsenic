@@ -14,7 +14,7 @@ func Test(t *testing.T) {
 	g.Describe("Referer", func() {
 		g.It("Should perform a basic query string request", func() {
 			var opts requestOptions
-			raw, _ := ioutil.ReadFile("./demo/basic_request.json")	    
+			raw, _ := ioutil.ReadFile("./test_data/basic_request.json")
 		    json.Unmarshal(raw, &opts)
 			DoRequest(opts)
 		})
