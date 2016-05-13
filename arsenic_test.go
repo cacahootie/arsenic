@@ -2,19 +2,21 @@ package arsenic
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"testing"
+
+	"github.com/franela/goblin"
 )
 
 func Test(t *testing.T) {
-	var opts requestOptions
-	raw, err := ioutil.ReadFile("./demo/config.json")
-    if err != nil {
-        fmt.Println(err.Error())
-        return
-    }
+	g := goblin.Goblin(t)
 
-    json.Unmarshal(raw, &opts)
-	DoRequest(opts)
+	g.Describe("Referer", func() {
+		g.It("Should perform a basic query string request", func() {
+			var opts requestOptions
+			raw, _ := ioutil.ReadFile("./demo/basic_request.json")	    
+		    json.Unmarshal(raw, &opts)
+			DoRequest(opts)
+		})
+	})
 }
