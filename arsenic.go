@@ -1,8 +1,8 @@
 package arsenic
 
 import (
+	"errors"
 	"encoding/json"
-	"fmt"
 	"github.com/parnurzeal/gorequest"
 )
 
@@ -41,10 +41,10 @@ func DoRequest(opts requestOptions) (data interface{}, errs []error) {
 	resp, b, e := r.End()
 	data = b
 	if e != nil {
-		fmt.Println(e)
-	} else if resp.Status != "200 OK" {
-		fmt.Println(resp.Status)
-		fmt.Println("non 200 status code")
+		errs = e
+	}
+	if resp.Status != "200 OK" {
+		errs = append(errs, errors.New("non 200 status code: " + resp.Status))
 	}
 	return
 }

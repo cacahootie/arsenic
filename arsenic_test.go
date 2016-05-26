@@ -11,7 +11,7 @@ import (
 func Test(t *testing.T) {
 	g := goblin.Goblin(t)
 
-	g.Describe("Referer", func() {
+	g.Describe("Arsenic", func() {
 		g.It("Should perform a basic query string request", func() {
 			var opts requestOptions
 			raw, _ := ioutil.ReadFile("./test_data/basic_request.json")
