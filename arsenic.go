@@ -30,7 +30,6 @@ func toJson(obj map[string]string) (s string) {
 
 func DoRequest(opts requestOptions) (data interface{}, errs []error) {
 	r := request.CustomMethod(opts.Method, opts.Url).
-		SetDebug(true).
 		Set("User-Agent", "Super-spiffy arsenic golang useragent")
 	if opts.QueryString != "" {
 		r.Query(opts.QueryString)
