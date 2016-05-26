@@ -21,17 +21,17 @@ func RequestOptions(url, method, queryString string) (retval requestOptions) {
 
 var request = gorequest.New()
 
-func DoRequest(opts requestOptions) (data interface{}, err error) {
+func DoRequest(opts requestOptions) (data interface{}, errs []error) {
 	r := request.CustomMethod(opts.Method, opts.Url).
 		SetDebug(true).
 		Set("User-Agent", "Super-spiffy arsenic golang useragent")
 	if opts.QueryString != "" {
 		r.Query(opts.QueryString)
 	}
-	resp, body, errs :=	r.End()
-	data = body
-	if errs != nil {
-		fmt.Println(errs)
+	resp, b, e := r.End()
+	data = b
+	if e != nil {
+		fmt.Println(e)
 	} else if resp.Status != "200 OK" {
 		fmt.Println(resp.Status)
 		fmt.Println("non 200 status code")
