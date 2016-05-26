@@ -26,7 +26,7 @@ func Test(t *testing.T) {
 		    json.Unmarshal(raw, &opts)
 			data, errs := DoRequest(opts)
 			g.Assert(len(errs)).Equal(0)
-			g.Assert(data).Equal("{\"monkey\":[\"flan\"]}\n")
+			g.Assert(data).Equal("{\"astor\":[\"pizziola\"],\"jappy\":[\"flappypants\"],\"monkey\":[\"flan\"]}\n")
 		})
 	})
 }
