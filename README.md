@@ -19,4 +19,5 @@ var opts requestOptions
 raw, _ := ioutil.ReadFile("./test_data/qstring_qobj_post.json")
 json.Unmarshal(raw, &opts)
 data, errs := DoRequest(opts)
+// data == "{\"monkey\":[\"flan\"]}\n"
 ```
