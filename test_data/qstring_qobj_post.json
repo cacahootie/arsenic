@@ -1,0 +1,9 @@
+{
+	"url":"http://localhost:8080",
+	"method":"POST",
+	"queryString":"monkey=flan",
+	"queryObj":{
+		"astor":"pizziola",
+		"jappy":"flappypants"
+	}
+}
