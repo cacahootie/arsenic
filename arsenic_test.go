@@ -28,5 +28,13 @@ func Test(t *testing.T) {
 			g.Assert(len(errs)).Equal(0)
 			g.Assert(data).Equal("{\"astor\":[\"pizziola\"],\"jappy\":[\"flappypants\"],\"monkey\":[\"flan\"]}\n")
 		})
+		g.It("Should perform a post request with both a query string and query parameters", func() {
+			var opts requestOptions
+			raw, _ := ioutil.ReadFile("./test_data/qstring_qobj_post.json")
+		    json.Unmarshal(raw, &opts)
+			data, errs := DoRequest(opts)
+			g.Assert(len(errs)).Equal(0)
+			g.Assert(data).Equal("{\"astor\":[\"pizziola\"],\"jappy\":[\"flappypants\"],\"monkey\":[\"flan\"]}\n")
+		})
 	})
 }
